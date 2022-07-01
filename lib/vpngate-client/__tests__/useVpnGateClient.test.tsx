@@ -1,4 +1,4 @@
-import {renderHook} from '@testing-library/react-hooks';
+import {renderHook, act} from '@testing-library/react-hooks';
 import RealmContext from '../../db/realmContext';
 import {fetchVpnGateServers, useVpnGateClient} from '../hook';
 import {VpnServerRepository} from '../interface';
@@ -79,7 +79,9 @@ describe('useVpnGateClient', () => {
 
     mockUseQuery.mockReturnValue([mockVpnServer]);
 
-    fetchServers();
+    act(() => {
+      fetchServers();
+    });
 
     await waitForNextUpdate();
 
