@@ -17,7 +17,9 @@ function extractHeaderTitle({
   return route.name;
 }
 
-function NavigationBar({navigation, back, options, route}: StackHeaderProps) {
+export type NavigationBarProps = Pick<StackHeaderProps, 'navigation' | 'back' | 'options' | 'route'>
+
+function NavigationBar({navigation, back, options, route}: NavigationBarProps) {
   const title = extractHeaderTitle({options, route});
 
   return (
