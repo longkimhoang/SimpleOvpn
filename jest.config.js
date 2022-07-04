@@ -9,8 +9,9 @@ const config = {
     './node_modules/react-native-gesture-handler/jestSetup.js',
   ],
   transformIgnorePatterns: [
-    'node_modules/(?!(@react-native|react-native|react-native-reanimated/lib/reanimated2|@realm/react)/)',
+    'node_modules/(?!(@react-native|react-native|react-native-reanimated/lib/reanimated2|@realm/react|react-native-iphone-x-helper|react-native-paper)/)',
   ],
+  setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
 };
 
 module.exports = config;

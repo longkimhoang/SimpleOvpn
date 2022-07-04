@@ -1,121 +1,42 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {Provider as PaperProvider} from 'react-native-paper';
+import NavigationBar from './lib/common/NavigationBar';
+import RealmContext from './lib/db/realmContext';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const {RealmProvider} = RealmContext;
 
-const Section: React.FC<{
-  children: React.ReactNode;
-  title: string;
-}> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+const Stack = createStackNavigator();
 
-const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+function Dummy() {
+  return <Text>Dummy View</Text>;
+}
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+function App() {
   return (
     <NavigationContainer>
-      <GestureHandlerRootView style={{flex: 1}}>
-        <SafeAreaView style={backgroundStyle}>
-          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={backgroundStyle}>
-            <Header />
-            <View
-              style={{
-                backgroundColor: isDarkMode ? Colors.black : Colors.white,
+      <RealmProvider>
+        <PaperProvider>
+          <GestureHandlerRootView style={styles.gestureRootView}>
+            <Stack.Navigator
+              screenOptions={{
+                header: props => <NavigationBar {...props} />,
               }}>
-              <Section title="Step One">
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change
-                this screen and then come back to see your edits.
-              </Section>
-              <Section title="See Your Changes">
-                <ReloadInstructions />
-              </Section>
-              <Section title="Debug">
-                <DebugInstructions />
-              </Section>
-              <Section title="Learn More">
-                Read the docs to discover what to do next:
-              </Section>
-              <LearnMoreLinks />
-            </View>
-          </ScrollView>
-        </SafeAreaView>
-      </GestureHandlerRootView>
+              <Stack.Screen name="dummy" component={Dummy} />
+            </Stack.Navigator>
+          </GestureHandlerRootView>
+        </PaperProvider>
+      </RealmProvider>
     </NavigationContainer>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  gestureRootView: {
+    flex: 1,
   },
 });
 

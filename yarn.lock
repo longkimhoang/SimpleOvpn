@@ -1084,6 +1084,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@callstack/react-theme-provider@npm:^3.0.7":
+  version: 3.0.7
+  resolution: "@callstack/react-theme-provider@npm:3.0.7"
+  dependencies:
+    deepmerge: ^3.2.0
+    hoist-non-react-statics: ^3.3.0
+  peerDependencies:
+    react: ">=16.3.0"
+  checksum: a39524d2bbc29b66d77d30ab4c169ae57fa5a435a2447febb4643d7431d525ca6025acebf1fcdbebd761f54f16f1e40f6745cf60acd5776851e8c1d546a1f32f
+  languageName: node
+  linkType: hard
+
 "@cnakazawa/watch@npm:^1.0.3":
   version: 1.0.4
   resolution: "@cnakazawa/watch@npm:1.0.4"
@@ -1762,6 +1774,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-navigation/elements@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "@react-navigation/elements@npm:1.3.3"
+  peerDependencies:
+    "@react-navigation/native": ^6.0.0
+    react: "*"
+    react-native: "*"
+    react-native-safe-area-context: ">= 3.0.0"
+  checksum: 2a2566dfb947f454387121873a49428096d5730393459842f2d52c1726fe541176be73e482abc49dcf49fc7873850d62e2b424d5280a0154e10745455882cab2
+  languageName: node
+  linkType: hard
+
 "@react-navigation/native@npm:^6.0.10":
   version: 6.0.10
   resolution: "@react-navigation/native@npm:6.0.10"
@@ -1783,6 +1807,24 @@ __metadata:
   dependencies:
     nanoid: ^3.1.23
   checksum: 08a4ad5d8ee132cd3901f07a39da8bbbd9f9359f6da669b1fc8d9cf57f1422d9297dce85545e7639a4d8b679291255ceb93392ff1df474dff219644435a4c22c
+  languageName: node
+  linkType: hard
+
+"@react-navigation/stack@npm:^6.2.1":
+  version: 6.2.1
+  resolution: "@react-navigation/stack@npm:6.2.1"
+  dependencies:
+    "@react-navigation/elements": ^1.3.3
+    color: ^3.1.3
+    warn-once: ^0.1.0
+  peerDependencies:
+    "@react-navigation/native": ^6.0.0
+    react: "*"
+    react-native: "*"
+    react-native-gesture-handler: ">= 1.0.0"
+    react-native-safe-area-context: ">= 3.0.0"
+    react-native-screens: ">= 3.0.0"
+  checksum: 5cb6b99dc0a3e02636509a2d14851943b0c421a87023622960ce97765b01fe2a9e4617001bfe0b25305ce1a39cbb6fa55d0e9aa3473a5185f93bb46cf5051e4e
   languageName: node
   linkType: hard
 
@@ -1855,6 +1897,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@testing-library/jest-native@npm:^4.0.5":
+  version: 4.0.5
+  resolution: "@testing-library/jest-native@npm:4.0.5"
+  dependencies:
+    chalk: ^2.4.1
+    jest-diff: ^27.4.6
+    jest-matcher-utils: ^27.4.6
+    pretty-format: ^27.3.1
+    ramda: ^0.26.1
+    redent: ^2.0.0
+  checksum: 4a319f310564cb00d28fd8ee870d607ec6a1109233eebefd5039926a767266232d70f3d9916e3778ddf3fb202454634498c09b6b8bd69277aee00b6ba51f93e2
+  languageName: node
+  linkType: hard
+
 "@testing-library/react-hooks@npm:^8.0.1":
   version: 8.0.1
   resolution: "@testing-library/react-hooks@npm:8.0.1"
@@ -1874,6 +1930,19 @@ __metadata:
     react-test-renderer:
       optional: true
   checksum: 7fe44352e920deb5cb1876f80d64e48615232072c9d5382f1e0284b3aab46bb1c659a040b774c45cdf084a5257b8fe463f7e08695ad8480d8a15635d4d3d1f6d
+  languageName: node
+  linkType: hard
+
+"@testing-library/react-native@npm:^10.1.1":
+  version: 10.1.1
+  resolution: "@testing-library/react-native@npm:10.1.1"
+  dependencies:
+    pretty-format: ^27.0.0
+  peerDependencies:
+    react: ">=16.0.0"
+    react-native: ">=0.59"
+    react-test-renderer: ">=16.0.0"
+  checksum: 65e8eda39a030d13b23e38a30db90059bfd34517bc407f2705c3bae85489627af7455205b491e7c13245891da59793786be02f38e9a6092a6aeca23c683d2dce
   languageName: node
   linkType: hard
 
@@ -2506,6 +2575,13 @@ __metadata:
   dependencies:
     color-convert: ^2.0.1
   checksum: 513b44c3b2105dd14cc42a19271e80f386466c4be574bccf60b627432f9198571ebf4ab1e4c3ba17347658f4ee1711c163d574248c0c1cdc2d5917a0ad582ec4
+  languageName: node
+  linkType: hard
+
+"ansi-styles@npm:^5.0.0":
+  version: 5.2.0
+  resolution: "ansi-styles@npm:5.2.0"
+  checksum: d7f4e97ce0623aea6bc0d90dcd28881ee04cba06c570b97fd3391bd7a268eedfd9d5e2dd4fdcbdd82b8105df5faf6f24aaedc08eaf3da898e702db5948f63469
   languageName: node
   linkType: hard
 
@@ -3220,7 +3296,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^2.0.0":
+"chalk@npm:^2.0.0, chalk@npm:^2.4.1":
   version: 2.4.2
   resolution: "chalk@npm:2.4.2"
   dependencies:
@@ -3344,6 +3420,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cliui@npm:^7.0.2":
+  version: 7.0.4
+  resolution: "cliui@npm:7.0.4"
+  dependencies:
+    string-width: ^4.2.0
+    strip-ansi: ^6.0.0
+    wrap-ansi: ^7.0.0
+  checksum: ce2e8f578a4813806788ac399b9e866297740eecd4ad1823c27fd344d78b22c5f8597d548adbcc46f0573e43e21e751f39446c5a5e804a12aace402b7a315d7f
+  languageName: node
+  linkType: hard
+
 "clone-deep@npm:^4.0.1":
   version: 4.0.1
   resolution: "clone-deep@npm:4.0.1"
@@ -3386,7 +3473,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-convert@npm:^1.9.0":
+"color-convert@npm:^1.9.0, color-convert@npm:^1.9.3":
   version: 1.9.3
   resolution: "color-convert@npm:1.9.3"
   dependencies:
@@ -3411,10 +3498,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-name@npm:~1.1.4":
+"color-name@npm:^1.0.0, color-name@npm:~1.1.4":
   version: 1.1.4
   resolution: "color-name@npm:1.1.4"
   checksum: b0445859521eb4021cd0fb0cc1a75cecf67fceecae89b63f62b201cca8d345baf8b952c966862a9d9a2632987d4f6581f0ec8d957dfacece86f0a7919316f610
+  languageName: node
+  linkType: hard
+
+"color-string@npm:^1.6.0":
+  version: 1.9.1
+  resolution: "color-string@npm:1.9.1"
+  dependencies:
+    color-name: ^1.0.0
+    simple-swizzle: ^0.2.2
+  checksum: c13fe7cff7885f603f49105827d621ce87f4571d78ba28ef4a3f1a104304748f620615e6bf065ecd2145d0d9dad83a3553f52bb25ede7239d18e9f81622f1cc5
   languageName: node
   linkType: hard
 
@@ -3424,6 +3521,16 @@ __metadata:
   bin:
     color-support: bin.js
   checksum: 9b7356817670b9a13a26ca5af1c21615463b500783b739b7634a0c2047c16cef4b2865d7576875c31c3cddf9dd621fa19285e628f20198b233a5cfdda6d0793b
+  languageName: node
+  linkType: hard
+
+"color@npm:^3.1.2, color@npm:^3.1.3":
+  version: 3.2.1
+  resolution: "color@npm:3.2.1"
+  dependencies:
+    color-convert: ^1.9.3
+    color-string: ^1.6.0
+  checksum: f81220e8b774d35865c2561be921f5652117638dcda7ca4029262046e37fc2444ac7bbfdd110cf1fd9c074a4ee5eda8f85944ffbdda26186b602dd9bb05f6400
   languageName: node
   linkType: hard
 
@@ -3898,6 +4005,13 @@ __metadata:
   version: 26.6.2
   resolution: "diff-sequences@npm:26.6.2"
   checksum: 79af871776ef149a7ff3345d6b1bf37fe6e81f68632aa5542787851f6f60fba19b0be22fdd1e06046f56ae7382763ccfe94a982c39ee72bd107aef435ecbc0cf
+  languageName: node
+  linkType: hard
+
+"diff-sequences@npm:^27.5.1":
+  version: 27.5.1
+  resolution: "diff-sequences@npm:27.5.1"
+  checksum: a00db5554c9da7da225db2d2638d85f8e41124eccbd56cbaefb3b276dcbb1c1c2ad851c32defe2055a54a4806f030656cbf6638105fd6ce97bb87b90b32a33ca
   languageName: node
   linkType: hard
 
@@ -4977,7 +5091,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"get-caller-file@npm:^2.0.1":
+"get-caller-file@npm:^2.0.1, get-caller-file@npm:^2.0.5":
   version: 2.0.5
   resolution: "get-caller-file@npm:2.0.5"
   checksum: b9769a836d2a98c3ee734a88ba712e62703f1df31b94b784762c433c27a386dd6029ff55c2a920c392e33657d80191edbf18c61487e198844844516f843496b9
@@ -5506,6 +5620,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"indent-string@npm:^3.0.0":
+  version: 3.2.0
+  resolution: "indent-string@npm:3.2.0"
+  checksum: a0b72603bba6c985d367fda3a25aad16423d2056b22a7e83ee2dd9ce0ce3d03d1e078644b679087aa7edf1cfb457f0d96d9eeadc0b12f38582088cc00e995d2f
+  languageName: node
+  linkType: hard
+
 "indent-string@npm:^4.0.0":
   version: 4.0.0
   resolution: "indent-string@npm:4.0.0"
@@ -5593,6 +5714,13 @@ __metadata:
   version: 0.2.1
   resolution: "is-arrayish@npm:0.2.1"
   checksum: eef4417e3c10e60e2c810b6084942b3ead455af16c4509959a27e490e7aee87cfb3f38e01bbde92220b528a0ee1a18d52b787e1458ee86174d8c7f0e58cd488f
+  languageName: node
+  linkType: hard
+
+"is-arrayish@npm:^0.3.1":
+  version: 0.3.2
+  resolution: "is-arrayish@npm:0.3.2"
+  checksum: 977e64f54d91c8f169b59afcd80ff19227e9f5c791fa28fa2e5bce355cbaf6c2c356711b734656e80c9dd4a854dd7efcf7894402f1031dfc5de5d620775b4d5f
   languageName: node
   linkType: hard
 
@@ -6111,6 +6239,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-diff@npm:^27.4.6, jest-diff@npm:^27.5.1":
+  version: 27.5.1
+  resolution: "jest-diff@npm:27.5.1"
+  dependencies:
+    chalk: ^4.0.0
+    diff-sequences: ^27.5.1
+    jest-get-type: ^27.5.1
+    pretty-format: ^27.5.1
+  checksum: 8be27c1e1ee57b2bb2bef9c0b233c19621b4c43d53a3c26e2c00a4e805eb4ea11fe1694a06a9fb0e80ffdcfdc0d2b1cb0b85920b3f5c892327ecd1e7bd96b865
+  languageName: node
+  linkType: hard
+
 "jest-docblock@npm:^26.0.0":
   version: 26.0.0
   resolution: "jest-docblock@npm:26.0.0"
@@ -6166,6 +6306,13 @@ __metadata:
   version: 26.3.0
   resolution: "jest-get-type@npm:26.3.0"
   checksum: 1cc6465ae4f5e880be22ba52fd270fa64c21994915f81b41f8f7553a7957dd8e077cc8d03035de9412e2d739f8bad6a032ebb5dab5805692a5fb9e20dd4ea666
+  languageName: node
+  linkType: hard
+
+"jest-get-type@npm:^27.5.1":
+  version: 27.5.1
+  resolution: "jest-get-type@npm:27.5.1"
+  checksum: 63064ab70195c21007d897c1157bf88ff94a790824a10f8c890392e7d17eda9c3900513cb291ca1c8d5722cad79169764e9a1279f7c8a9c4cd6e9109ff04bbc0
   languageName: node
   linkType: hard
 
@@ -6263,6 +6410,18 @@ __metadata:
     jest-get-type: ^26.3.0
     pretty-format: ^26.6.2
   checksum: 74d2165c1ac7fe98fe27cd2b5407499478e6b2fe99dd54e26d8ee5c9f5f913bdd7bdc07c7221b9b04df0c15e9be0e866ff3455b03e38cc66c480d9996d6d5405
+  languageName: node
+  linkType: hard
+
+"jest-matcher-utils@npm:^27.4.6":
+  version: 27.5.1
+  resolution: "jest-matcher-utils@npm:27.5.1"
+  dependencies:
+    chalk: ^4.0.0
+    jest-diff: ^27.5.1
+    jest-get-type: ^27.5.1
+    pretty-format: ^27.5.1
+  checksum: bb2135fc48889ff3fe73888f6cc7168ddab9de28b51b3148f820c89fdfd2effdcad005f18be67d0b9be80eda208ad47290f62f03d0a33f848db2dd0273c8217a
   languageName: node
   linkType: hard
 
@@ -8406,6 +8565,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pretty-format@npm:^27.0.0, pretty-format@npm:^27.3.1, pretty-format@npm:^27.5.1":
+  version: 27.5.1
+  resolution: "pretty-format@npm:27.5.1"
+  dependencies:
+    ansi-regex: ^5.0.1
+    ansi-styles: ^5.0.0
+    react-is: ^17.0.1
+  checksum: cf610cffcb793885d16f184a62162f2dd0df31642d9a18edf4ca298e909a8fe80bdbf556d5c9573992c102ce8bf948691da91bf9739bee0ffb6e79c8a8a6e088
+  languageName: node
+  linkType: hard
+
 "process-nextick-args@npm:~2.0.0":
   version: 2.0.1
   resolution: "process-nextick-args@npm:2.0.1"
@@ -8542,6 +8712,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ramda@npm:^0.26.1":
+  version: 0.26.1
+  resolution: "ramda@npm:0.26.1"
+  checksum: 19c2730e44c129538151ae034c89be9b2c6a4ccc7c65cff57497418bc532ce09282f98cd927c39b0b03c6bc3f1d1a12d822b7b07f96a1634f4958a6c05b7b384
+  languageName: node
+  linkType: hard
+
 "range-parser@npm:~1.2.1":
   version: 1.2.1
   resolution: "range-parser@npm:1.2.1"
@@ -8649,6 +8826,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-iphone-x-helper@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "react-native-iphone-x-helper@npm:1.3.1"
+  peerDependencies:
+    react-native: ">=0.42.0"
+  checksum: 024376646009a966e33e12fc2358751830818b0fb73b1c601a64eb5e490d2dc43eec23668991b985a8c412a84d087f20eb45bb9b593567c08b66e741b7bddda5
+  languageName: node
+  linkType: hard
+
+"react-native-paper@npm:rc":
+  version: 5.0.0-rc.2
+  resolution: "react-native-paper@npm:5.0.0-rc.2"
+  dependencies:
+    "@callstack/react-theme-provider": ^3.0.7
+    color: ^3.1.2
+    react-native-iphone-x-helper: ^1.3.1
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-vector-icons: "*"
+  checksum: e42d49dfbc24d2d2a0762b93412bd07869a085737ac31ce96fe5e4a3eac6428222c1b7210d2179b531ce0f2db9ae32dff5ec0aeb7da517bcbbbbdd073263a58e
+  languageName: node
+  linkType: hard
+
 "react-native-reanimated@npm:3.0.0-rc.0":
   version: 3.0.0-rc.0
   resolution: "react-native-reanimated@npm:3.0.0-rc.0"
@@ -8688,6 +8889,19 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: aaab7071f65ea7b3be197417e073d0cad06c80fcb2a956faaeb020322c8002963f4d14ba96550484e96d156a48a29989c1485f47ec4bcd98c9701fe8de5c7cc1
+  languageName: node
+  linkType: hard
+
+"react-native-vector-icons@npm:^9.2.0":
+  version: 9.2.0
+  resolution: "react-native-vector-icons@npm:9.2.0"
+  dependencies:
+    prop-types: ^15.7.2
+    yargs: ^16.1.1
+  bin:
+    fa5-upgrade: bin/fa5-upgrade.sh
+    generate-icon: bin/generate-icon.js
+  checksum: 222baf88c3f269234c08a41680e6400a4bf1f4c170f7c2ffac34b2c1c089cdb1084223db2a7d9cc54ee212eec20ff1478f3f482df19062e3057c328642da0be2
   languageName: node
   linkType: hard
 
@@ -8898,6 +9112,16 @@ __metadata:
     source-map: ~0.6.1
     tslib: ^2.0.1
   checksum: 14c35115cd9965950724cb2968f069a247fa79ce890643ab6dc3795c705b363f7b92a45238e9f765387c306763be9955f72047bb9d15b5d60b0a55f9e7912d5a
+  languageName: node
+  linkType: hard
+
+"redent@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "redent@npm:2.0.0"
+  dependencies:
+    indent-string: ^3.0.0
+    strip-indent: ^2.0.0
+  checksum: c3bcea97de01023efbe826cd72abf2e5948e096acd808a498b4de5dd25e64ad8df0cb4218403197b4ea050ce73f2264a318bf469a27f87ba8ca31543892011d4
   languageName: node
   linkType: hard
 
@@ -9508,6 +9732,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"simple-swizzle@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "simple-swizzle@npm:0.2.2"
+  dependencies:
+    is-arrayish: ^0.3.1
+  checksum: a7f3f2ab5c76c4472d5c578df892e857323e452d9f392e1b5cf74b74db66e6294a1e1b8b390b519fa1b96b5b613f2a37db6cffef52c3f1f8f3c5ea64eb2d54c0
+  languageName: node
+  linkType: hard
+
 "simpleovpn@workspace:.":
   version: 0.0.0-use.local
   resolution: "simpleovpn@workspace:."
@@ -9516,8 +9749,11 @@ __metadata:
     "@babel/runtime": ^7.12.5
     "@react-native-community/eslint-config": ^2.0.0
     "@react-navigation/native": ^6.0.10
+    "@react-navigation/stack": ^6.2.1
     "@realm/react": ^0.3.1
+    "@testing-library/jest-native": ^4.0.5
     "@testing-library/react-hooks": ^8.0.1
+    "@testing-library/react-native": ^10.1.1
     "@types/jest": ^26.0.23
     "@types/react-native": ^0.69.0
     "@types/react-test-renderer": ^18.0.0
@@ -9525,15 +9761,18 @@ __metadata:
     "@typescript-eslint/parser": ^5.29.0
     babel-jest: ^26.6.3
     csvtojson: ^2.0.10
+    deepmerge: ^4.2.2
     eslint: ^7.32.0
     jest: ^26.6.3
     metro-react-native-babel-preset: ^0.70.3
     react: 18.0.0
     react-native: 0.69.1
     react-native-gesture-handler: ^2.5.0
+    react-native-paper: rc
     react-native-reanimated: 3.0.0-rc.0
     react-native-safe-area-context: ^4.3.1
     react-native-screens: ^3.13.1
+    react-native-vector-icons: ^9.2.0
     react-test-renderer: 18.0.0
     realm: ^10.19.3
     typescript: ^4.4.4
@@ -9970,6 +10209,13 @@ __metadata:
   version: 2.0.0
   resolution: "strip-final-newline@npm:2.0.0"
   checksum: 69412b5e25731e1938184b5d489c32e340605bb611d6140344abc3421b7f3c6f9984b21dff296dfcf056681b82caa3bb4cc996a965ce37bcfad663e92eae9c64
+  languageName: node
+  linkType: hard
+
+"strip-indent@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "strip-indent@npm:2.0.0"
+  checksum: 7d9080d02ddace616ebbc17846e41d3880cb147e2a81e51142281322ded6b05b230a4fb12c2e5266f62735cf8f5fb9839e55d74799d11f26bcc8c71ca049a0ba
   languageName: node
   linkType: hard
 
@@ -10862,6 +11108,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"wrap-ansi@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "wrap-ansi@npm:7.0.0"
+  dependencies:
+    ansi-styles: ^4.0.0
+    string-width: ^4.1.0
+    strip-ansi: ^6.0.0
+  checksum: a790b846fd4505de962ba728a21aaeda189b8ee1c7568ca5e817d85930e06ef8d1689d49dbf0e881e8ef84436af3a88bc49115c2e2788d841ff1b8b5b51a608b
+  languageName: node
+  linkType: hard
+
 "wrappy@npm:1":
   version: 1.0.2
   resolution: "wrappy@npm:1.0.2"
@@ -10951,6 +11208,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"y18n@npm:^5.0.5":
+  version: 5.0.8
+  resolution: "y18n@npm:5.0.8"
+  checksum: 54f0fb95621ee60898a38c572c515659e51cc9d9f787fb109cef6fde4befbe1c4602dc999d30110feee37456ad0f1660fa2edcfde6a9a740f86a290999550d30
+  languageName: node
+  linkType: hard
+
 "yallist@npm:^4.0.0":
   version: 4.0.0
   resolution: "yallist@npm:4.0.0"
@@ -10965,6 +11229,13 @@ __metadata:
     camelcase: ^5.0.0
     decamelize: ^1.2.0
   checksum: 60e8c7d1b85814594d3719300ecad4e6ae3796748b0926137bfec1f3042581b8646d67e83c6fc80a692ef08b8390f21ddcacb9464476c39bbdf52e34961dd4d9
+  languageName: node
+  linkType: hard
+
+"yargs-parser@npm:^20.2.2":
+  version: 20.2.9
+  resolution: "yargs-parser@npm:20.2.9"
+  checksum: 8bb69015f2b0ff9e17b2c8e6bfe224ab463dd00ca211eece72a4cd8a906224d2703fb8a326d36fdd0e68701e201b2a60ed7cf81ce0fd9b3799f9fe7745977ae3
   languageName: node
   linkType: hard
 
@@ -10984,5 +11255,20 @@ __metadata:
     y18n: ^4.0.0
     yargs-parser: ^18.1.2
   checksum: 40b974f508d8aed28598087720e086ecd32a5fd3e945e95ea4457da04ee9bdb8bdd17fd91acff36dc5b7f0595a735929c514c40c402416bbb87c03f6fb782373
+  languageName: node
+  linkType: hard
+
+"yargs@npm:^16.1.1":
+  version: 16.2.0
+  resolution: "yargs@npm:16.2.0"
+  dependencies:
+    cliui: ^7.0.2
+    escalade: ^3.1.1
+    get-caller-file: ^2.0.5
+    require-directory: ^2.1.1
+    string-width: ^4.2.0
+    y18n: ^5.0.5
+    yargs-parser: ^20.2.2
+  checksum: b14afbb51e3251a204d81937c86a7e9d4bdbf9a2bcee38226c900d00f522969ab675703bee2a6f99f8e20103f608382936034e64d921b74df82b63c07c5e8f59
   languageName: node
   linkType: hard
