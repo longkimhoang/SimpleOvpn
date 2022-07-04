@@ -24,8 +24,13 @@ function NavigationBar({navigation, back, options, route}: NavigationBarProps) {
 
   return (
     <Appbar.Header>
-      {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
-      <Appbar.Content title={title} />
+      {back ? (
+        <Appbar.BackAction
+          onPress={navigation.goBack}
+          testID="navbar.button.back"
+        />
+      ) : null}
+      <Appbar.Content title={title} testID="navbar.title" />
     </Appbar.Header>
   );
 }
