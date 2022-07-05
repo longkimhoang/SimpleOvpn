@@ -71,3 +71,7 @@ buck-out/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Test report and coverage
+coverage/
+test-report.xml
