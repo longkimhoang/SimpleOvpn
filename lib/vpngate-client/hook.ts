@@ -1,5 +1,5 @@
 import csv from 'csvtojson';
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useState} from 'react';
 import compactMap from '../common/compactMap';
 import RealmContext from '../db/realmContext';
 import {VPN_GATE_SERVERS_LIST_URL} from './constants';
@@ -41,7 +41,7 @@ export const fetchVpnGateServers: FetchVpnServersAction = async () => {
   const lines = body.split(/\r?\n/).map(s => s.trim());
   const data = lines.slice(1).join('\n');
 
-  return await converter
+  return converter
     .fromString(data)
     .then(values => compactMap(values, convertToVpnServer));
 };
