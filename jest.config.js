@@ -12,6 +12,7 @@ const config = {
     'node_modules/(?!(@react-native|react-native|react-native-reanimated/lib/reanimated2|@realm/react|react-native-iphone-x-helper|react-native-paper)/)',
   ],
   setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
+  testResultsProcessor: 'jest-sonar-reporter',
 };
 
 module.exports = config;
