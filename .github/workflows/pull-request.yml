@@ -16,7 +16,7 @@ jobs:
           node-version: 16
           cache: yarn
       - run: yarn install --immutable
-      - run: yarn test
+      - run: yarn test:coverage
       - name: SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
