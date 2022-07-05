@@ -15,8 +15,9 @@ jobs:
           lfs: true
           fetch-depth: 0
       - name: Download test artifacts
-        uses: actions/download-artifact@v3
+        uses: dawidd6/action-download-artifact@v2
         with:
+          workflow: pull-request.yml
           name: javascript-test
       - name: SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
