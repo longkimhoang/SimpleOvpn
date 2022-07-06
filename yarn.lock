@@ -8275,6 +8275,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-mmkv@npm:^2.4.3":
+  version: 2.4.3
+  resolution: "react-native-mmkv@npm:2.4.3"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: d01cda411babfaabd6389c26d0ea403b36b5203d82b8a4fe4800317d4192aaa805fcafedd5945692c7893c6c95b01e1d57e8871a76dcd92ab594ed9c84c5faa3
+  languageName: node
+  linkType: hard
+
 "react-native-paper@npm:rc":
   version: 5.0.0-rc.2
   resolution: "react-native-paper@npm:5.0.0-rc.2"
@@ -9112,6 +9122,7 @@ __metadata:
     react: 18.0.0
     react-native: 0.69.1
     react-native-gesture-handler: ^2.5.0
+    react-native-mmkv: ^2.4.3
     react-native-paper: rc
     react-native-reanimated: 3.0.0-rc.0
     react-native-safe-area-context: ^4.3.1

@@ -4,7 +4,7 @@ import compactMap from '../common/compactMap';
 import {VPN_GATE_SERVERS_LIST_URL} from './constants';
 import {FetchServersOptions, VpnServerRepository} from './interface';
 import {IVpnServer} from './models';
-import {useRealmVpnServerStorage, VpnServerStorage} from './storage';
+import {useMmkvVpnServerStorage, VpnServerStorage} from './storage';
 
 //#region Typedefs
 
@@ -64,7 +64,7 @@ export function useVpnGateClient(
 ): VpnServerRepository {
   const deps: UseVpnGateClientDeps = {
     fetchVpnServersAction: fetchVpnGateServers,
-    useVpnServerStorage: useRealmVpnServerStorage,
+    useVpnServerStorage: useMmkvVpnServerStorage,
     ...overrideDeps,
   };
 
