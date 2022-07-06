@@ -1,17 +1,24 @@
 import csv from 'csvtojson';
 import {useCallback, useState} from 'react';
 import compactMap from '../common/compactMap';
-import RealmContext from '../db/realmContext';
 import {VPN_GATE_SERVERS_LIST_URL} from './constants';
-import {VpnServerRepository} from './interface';
-import {IVpnServer, VpnServer} from './models';
+import {FetchServersOptions, VpnServerRepository} from './interface';
+import {IVpnServer} from './models';
+import {useRealmVpnServerStorage, VpnServerStorage} from './storage';
 
 //#region Typedefs
 
-export type FetchVpnServersAction = () => Promise<readonly IVpnServer[]>;
+export interface FetchVpnServersActionOptions {
+  signal?: AbortSignal;
+}
+
+export type FetchVpnServersAction = (
+  options?: FetchVpnServersActionOptions,
+) => Promise<readonly IVpnServer[]>;
 
 export interface UseVpnGateClientDeps {
   fetchVpnServersAction: FetchVpnServersAction;
+  useVpnServerStorage: () => VpnServerStorage;
 }
 
 //#endregion
@@ -34,12 +41,14 @@ function convertToVpnServer(value: any): IVpnServer {
   };
 }
 
-export const fetchVpnGateServers: FetchVpnServersAction = async () => {
-  const response = await fetch(VPN_GATE_SERVERS_LIST_URL);
+export const fetchVpnGateServers: FetchVpnServersAction = async options => {
+  const response = await fetch(VPN_GATE_SERVERS_LIST_URL, {
+    signal: options?.signal,
+  });
   const body = await response.text();
 
   const lines = body.split(/\r?\n/).map(s => s.trim());
-  const data = lines.slice(1).join('\n');
+  const data = lines.slice(1, -2).join('\n');
 
   return converter
     .fromString(data)
@@ -51,32 +60,30 @@ export const fetchVpnGateServers: FetchVpnServersAction = async () => {
 //#region Hook
 
 export function useVpnGateClient(
-  deps: UseVpnGateClientDeps = {
-    fetchVpnServersAction: fetchVpnGateServers,
-  },
+  overrideDeps?: Partial<UseVpnGateClientDeps>,
 ): VpnServerRepository {
-  const {fetchVpnServersAction} = deps;
-  const {useRealm, useQuery} = RealmContext;
+  const deps: UseVpnGateClientDeps = {
+    fetchVpnServersAction: fetchVpnGateServers,
+    useVpnServerStorage: useRealmVpnServerStorage,
+    ...overrideDeps,
+  };
+
+  const {fetchVpnServersAction, useVpnServerStorage} = deps;
 
   const [isFetching, setIsFetching] = useState(() => false);
-  const realm = useRealm();
-  const result = useQuery(VpnServer);
-  const dispatch = useCallback(() => {
+  const {data, write} = useVpnServerStorage();
+  const dispatch = useCallback((options?: FetchServersOptions) => {
     setIsFetching(true);
 
-    fetchVpnServersAction().then(vpnServers => {
-      realm.write(() => {
-        for (const server of vpnServers) {
-          realm.create(VpnServer, VpnServer.generate(server));
-        }
-      });
+    fetchVpnServersAction({signal: options?.signal}).then(vpnServers => {
+      write(vpnServers);
 
       setIsFetching(false);
     });
   }, []);
 
   return {
-    vpnServers: result,
+    vpnServers: data,
     isFetching,
     fetchServers: dispatch,
   };

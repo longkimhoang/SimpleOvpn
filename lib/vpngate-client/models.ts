@@ -13,7 +13,6 @@ export interface IVpnServer {
 }
 
 export class VpnServer extends Realm.Object implements IVpnServer {
-  _id!: Realm.BSON.ObjectId;
   hostName!: string;
   ipAddress!: string;
   score!: number;
@@ -24,20 +23,16 @@ export class VpnServer extends Realm.Object implements IVpnServer {
   operator!: string;
   base64EncodedOvpnConfig!: string;
 
-  static generate(
-    properties: IVpnServer,
-  ): RealmInsertionModel<VpnServer> {
+  static generate(properties: IVpnServer): RealmInsertionModel<VpnServer> {
     return {
       ...properties,
-      _id: new Realm.BSON.ObjectId(),
     };
   }
 
   static schema: ObjectSchema = {
     name: 'VpnServer',
-    primaryKey: '_id',
+    primaryKey: 'ipAddress',
     properties: {
-      _id: 'objectId',
       hostName: 'string',
       ipAddress: 'string',
       score: {
