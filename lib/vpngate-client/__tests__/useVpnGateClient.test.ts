@@ -1,9 +1,11 @@
-import {renderHook, act} from '@testing-library/react-hooks';
+import {act, renderHook} from '@testing-library/react-hooks';
+// @ts-expect-error
+import {AbortController} from 'abortcontroller-polyfill/dist/cjs-ponyfill';
 import {useCallback, useState} from 'react';
 import RealmContext from '../../db/realmContext';
 import {fetchVpnGateServers, useVpnGateClient} from '../hook';
 import {VpnServerRepository} from '../interface';
-import {IVpnServer, VpnServer} from '../models';
+import {IVpnServer} from '../models';
 
 describe('useVpnGateClient', () => {
   const mockUseRealm = jest.fn();
@@ -94,5 +96,29 @@ describe('useVpnGateClient', () => {
       isFetching: false,
       vpnServers: [mockVpnServer],
     });
+  });
+
+  it('should cancel fetch on unmount', () => {
+    const mockFetchVpnServersAction = jest.fn(() => {
+      return Promise.resolve([mockVpnServer]);
+    });
+
+    const {result} = renderHook(() =>
+      useVpnGateClient({
+        fetchVpnServersAction: mockFetchVpnServersAction,
+      }),
+    );
+
+    const {fetchServers} = result.current;
+
+    const ac = new AbortController();
+
+    act(() => {
+      fetchServers({signal: ac.signal});
+    });
+
+    ac.abort();
+
+    expect(ac.signal.aborted).toBe(true);
   });
 });

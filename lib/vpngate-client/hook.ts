@@ -2,13 +2,19 @@ import csv from 'csvtojson';
 import {useCallback, useState} from 'react';
 import compactMap from '../common/compactMap';
 import {VPN_GATE_SERVERS_LIST_URL} from './constants';
-import {VpnServerRepository} from './interface';
+import {FetchServersOptions, VpnServerRepository} from './interface';
 import {IVpnServer} from './models';
 import {useRealmVpnServerStorage, VpnServerStorage} from './storage';
 
 //#region Typedefs
 
-export type FetchVpnServersAction = () => Promise<readonly IVpnServer[]>;
+export interface FetchVpnServersActionOptions {
+  signal?: AbortSignal;
+}
+
+export type FetchVpnServersAction = (
+  options?: FetchVpnServersActionOptions,
+) => Promise<readonly IVpnServer[]>;
 
 export interface UseVpnGateClientDeps {
   fetchVpnServersAction: FetchVpnServersAction;
@@ -35,8 +41,10 @@ function convertToVpnServer(value: any): IVpnServer {
   };
 }
 
-export const fetchVpnGateServers: FetchVpnServersAction = async () => {
-  const response = await fetch(VPN_GATE_SERVERS_LIST_URL);
+export const fetchVpnGateServers: FetchVpnServersAction = async options => {
+  const response = await fetch(VPN_GATE_SERVERS_LIST_URL, {
+    signal: options?.signal,
+  });
   const body = await response.text();
 
   const lines = body.split(/\r?\n/).map(s => s.trim());
@@ -64,10 +72,10 @@ export function useVpnGateClient(
 
   const [isFetching, setIsFetching] = useState(() => false);
   const {data, write} = useVpnServerStorage();
-  const dispatch = useCallback(() => {
+  const dispatch = useCallback((options?: FetchServersOptions) => {
     setIsFetching(true);
 
-    fetchVpnServersAction().then(vpnServers => {
+    fetchVpnServersAction({signal: options?.signal}).then(vpnServers => {
       write(vpnServers);
 
       setIsFetching(false);
