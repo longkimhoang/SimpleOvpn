@@ -40,7 +40,7 @@ export const fetchVpnGateServers: FetchVpnServersAction = async () => {
   const body = await response.text();
 
   const lines = body.split(/\r?\n/).map(s => s.trim());
-  const data = lines.slice(1).join('\n');
+  const data = lines.slice(1, -2).join('\n');
 
   return converter
     .fromString(data)
@@ -52,10 +52,7 @@ export const fetchVpnGateServers: FetchVpnServersAction = async () => {
 //#region Hook
 
 export function useVpnGateClient(
-  overrideDeps: Partial<UseVpnGateClientDeps> = {
-    fetchVpnServersAction: fetchVpnGateServers,
-    useVpnServerStorage: useRealmVpnServerStorage,
-  },
+  overrideDeps?: Partial<UseVpnGateClientDeps>,
 ): VpnServerRepository {
   const deps: UseVpnGateClientDeps = {
     fetchVpnServersAction: fetchVpnGateServers,

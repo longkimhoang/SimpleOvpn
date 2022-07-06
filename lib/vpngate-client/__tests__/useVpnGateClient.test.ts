@@ -1,4 +1,5 @@
 import {renderHook, act} from '@testing-library/react-hooks';
+import {useCallback, useState} from 'react';
 import RealmContext from '../../db/realmContext';
 import {fetchVpnGateServers, useVpnGateClient} from '../hook';
 import {VpnServerRepository} from '../interface';
@@ -31,11 +32,11 @@ describe('useVpnGateClient', () => {
   };
 
   it('should fetch and parse the response correctly', async () => {
-    const mockResponse = `
-    *vpn_servers
+    const mockResponse = `*vpn_servers
     #HostName,IP,Score,Ping,Speed,CountryLong,CountryShort,NumVpnSessions,Uptime,TotalUsers,TotalTraffic,LogType,Operator,Message,OpenVPN_ConfigData_Base64
     public-vpn-90,219.100.37.55,3037585,16,71957702,Japan,JP,339,3046622253,8720863,449901453895676,2weeks,Daiyuu Nobori_ Japan. Academic Use Only.,,mockBase64OvpnConfig
-    `.trim();
+    *
+    `;
 
     global.fetch = jest.fn().mockImplementationOnce(() => {
       return {
@@ -53,22 +54,22 @@ describe('useVpnGateClient', () => {
       return Promise.resolve([mockVpnServer]);
     });
 
-    const mockRealmWrite = jest.fn((callback: () => void) => {
-      callback();
-    });
-    const mockRealmCreate = jest.fn();
+    function useMockUseVpnServerStorage() {
+      const [data, setData] = useState<readonly IVpnServer[]>(() => []);
+      const write = useCallback((newData: readonly IVpnServer[]) => {
+        setData(newData);
+      }, []);
 
-    const mockRealm = {
-      write: mockRealmWrite,
-      create: mockRealmCreate,
-    };
-
-    mockUseRealm.mockReturnValue(mockRealm);
-    mockUseQuery.mockReturnValue([]);
+      return {
+        data,
+        write,
+      };
+    }
 
     const {result, waitForNextUpdate} = renderHook(() =>
       useVpnGateClient({
         fetchVpnServersAction: mockFetchVpnServersAction,
+        useVpnServerStorage: useMockUseVpnServerStorage,
       }),
     );
 
@@ -85,16 +86,11 @@ describe('useVpnGateClient', () => {
 
     await waitForNextUpdate();
 
-    expect(mockRealmWrite).toHaveBeenCalledTimes(1);
-    expect(mockRealmCreate).toHaveBeenCalledTimes(1);
-
-    expect(mockUseQuery).toHaveBeenCalledWith(VpnServer);
-
     expect(result.all[1] as VpnServerRepository).toHaveProperty(
       'isFetching',
       true,
     );
-    expect(result.all[2] as VpnServerRepository).toMatchObject({
+    expect(result.all[3] as VpnServerRepository).toMatchObject({
       isFetching: false,
       vpnServers: [mockVpnServer],
     });

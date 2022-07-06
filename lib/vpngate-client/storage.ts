@@ -17,7 +17,7 @@ export function useRealmVpnServerStorage(): VpnServerStorage {
     write: data => {
       realm.write(() => {
         for (const server of data) {
-          realm.create(VpnServer, VpnServer.generate(server));
+          realm.create(VpnServer, VpnServer.generate(server), Realm.UpdateMode.Modified);
         }
       });
     },
