@@ -2,25 +2,11 @@ import {act, renderHook} from '@testing-library/react-hooks';
 // @ts-expect-error
 import {AbortController} from 'abortcontroller-polyfill/dist/cjs-ponyfill';
 import {useCallback, useState} from 'react';
-import RealmContext from '../../db/realmContext';
 import {fetchVpnGateServers, useVpnGateClient} from '../hook';
 import {VpnServerRepository} from '../interface';
 import {IVpnServer} from '../models';
 
 describe('useVpnGateClient', () => {
-  const mockUseRealm = jest.fn();
-  const mockUseQuery = jest.fn();
-
-  beforeAll(() => {
-    RealmContext.useRealm = mockUseRealm;
-    RealmContext.useQuery = mockUseQuery;
-  });
-
-  beforeEach(() => {
-    mockUseRealm.mockReset();
-    mockUseQuery.mockReset();
-  });
-
   const mockVpnServer: IVpnServer = {
     hostName: 'public-vpn-90',
     ipAddress: '219.100.37.55',
@@ -79,8 +65,6 @@ describe('useVpnGateClient', () => {
 
     expect(result.current.vpnServers).toEqual([]);
     expect(result.current.isFetching).toEqual(false);
-
-    mockUseQuery.mockReturnValue([mockVpnServer]);
 
     act(() => {
       fetchServers();

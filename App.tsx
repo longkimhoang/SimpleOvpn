@@ -5,9 +5,6 @@ import {StyleSheet, Text} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {Provider as PaperProvider} from 'react-native-paper';
 import NavigationBar from './lib/common/NavigationBar';
-import RealmContext from './lib/db/realmContext';
-
-const {RealmProvider} = RealmContext;
 
 const Stack = createStackNavigator();
 
@@ -18,18 +15,16 @@ function Dummy() {
 function App() {
   return (
     <NavigationContainer>
-      <RealmProvider>
-        <PaperProvider>
-          <GestureHandlerRootView style={styles.gestureRootView}>
-            <Stack.Navigator
-              screenOptions={{
-                header: props => <NavigationBar {...props} />,
-              }}>
-              <Stack.Screen name="dummy" component={Dummy} />
-            </Stack.Navigator>
-          </GestureHandlerRootView>
-        </PaperProvider>
-      </RealmProvider>
+      <PaperProvider>
+        <GestureHandlerRootView style={styles.gestureRootView}>
+          <Stack.Navigator
+            screenOptions={{
+              header: props => <NavigationBar {...props} />,
+            }}>
+            <Stack.Screen name="dummy" component={Dummy} />
+          </Stack.Navigator>
+        </GestureHandlerRootView>
+      </PaperProvider>
     </NavigationContainer>
   );
 }
