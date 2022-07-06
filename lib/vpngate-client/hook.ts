@@ -1,10 +1,10 @@
 import csv from 'csvtojson';
 import {useCallback, useState} from 'react';
 import compactMap from '../common/compactMap';
-import RealmContext from '../db/realmContext';
 import {VPN_GATE_SERVERS_LIST_URL} from './constants';
 import {VpnServerRepository} from './interface';
-import {IVpnServer, VpnServer} from './models';
+import {IVpnServer} from './models';
+import {useRealmVpnServerStorage, VpnServerStorage} from './storage';
 
 //#region Typedefs
 
@@ -12,6 +12,7 @@ export type FetchVpnServersAction = () => Promise<readonly IVpnServer[]>;
 
 export interface UseVpnGateClientDeps {
   fetchVpnServersAction: FetchVpnServersAction;
+  useVpnServerStorage: () => VpnServerStorage;
 }
 
 //#endregion
@@ -51,32 +52,33 @@ export const fetchVpnGateServers: FetchVpnServersAction = async () => {
 //#region Hook
 
 export function useVpnGateClient(
-  deps: UseVpnGateClientDeps = {
+  overrideDeps: Partial<UseVpnGateClientDeps> = {
     fetchVpnServersAction: fetchVpnGateServers,
+    useVpnServerStorage: useRealmVpnServerStorage,
   },
 ): VpnServerRepository {
-  const {fetchVpnServersAction} = deps;
-  const {useRealm, useQuery} = RealmContext;
+  const deps: UseVpnGateClientDeps = {
+    fetchVpnServersAction: fetchVpnGateServers,
+    useVpnServerStorage: useRealmVpnServerStorage,
+    ...overrideDeps,
+  };
+
+  const {fetchVpnServersAction, useVpnServerStorage} = deps;
 
   const [isFetching, setIsFetching] = useState(() => false);
-  const realm = useRealm();
-  const result = useQuery(VpnServer);
+  const {data, write} = useVpnServerStorage();
   const dispatch = useCallback(() => {
     setIsFetching(true);
 
     fetchVpnServersAction().then(vpnServers => {
-      realm.write(() => {
-        for (const server of vpnServers) {
-          realm.create(VpnServer, VpnServer.generate(server));
-        }
-      });
+      write(vpnServers);
 
       setIsFetching(false);
     });
   }, []);
 
   return {
-    vpnServers: result,
+    vpnServers: data,
     isFetching,
     fetchServers: dispatch,
   };
