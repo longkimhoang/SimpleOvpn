@@ -1,14 +1,13 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect} from 'react';
-import {useLayoutEffect} from 'react';
+import React, {useEffect, useLayoutEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {ActivityIndicator} from 'react-native-paper';
 import Animated, {useAnimatedStyle} from 'react-native-reanimated';
-import NavigationBar from '../../common/NavigationBar';
-import {VpnServerListNavigationProps} from '../../navigation/types';
-import {useVpnGateClient} from '../../vpngate-client';
-import RefetchServersButton from './RefetchServersButton';
-import VpnServerList from './VpnServerList';
+import NavigationBar from '../common/NavigationBar';
+import {VpnServerListNavigationProps} from '../navigation/types';
+import {useVpnGateClient} from '../vpngate-client';
+import RefetchServersButton from './components/RefetchServersButton';
+import VpnServerList from './components/VpnServerList';
 
 const LoadingIndicatorWrapper: React.FC<{isFetching: boolean}> = ({
   isFetching,

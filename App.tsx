@@ -6,7 +6,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {Provider as PaperProvider} from 'react-native-paper';
 import NavigationBar from './lib/common/NavigationBar';
 import {RootStackParamList} from './lib/navigation/types';
-import VpnServerListScreen from './lib/vpn-server-list/components/VpnServerListScreen';
+import VpnServerListScreen from './lib/vpn-server-list/VpnServerListScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();
 

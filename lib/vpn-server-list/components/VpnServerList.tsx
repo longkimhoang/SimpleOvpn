@@ -23,11 +23,11 @@ function getVpnServerCellLayout(
   };
 }
 
-//#endregion
-
 function extractKeyForVpnServerItem(item: IVpnServer): string {
   return item.ipAddress;
 }
+
+//#endregion
 
 //#region Component
 
