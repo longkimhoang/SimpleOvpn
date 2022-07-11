@@ -1,16 +1,14 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {Provider as PaperProvider} from 'react-native-paper';
 import NavigationBar from './lib/common/NavigationBar';
+import {RootStackParamList} from './lib/navigation/types';
+import VpnServerListScreen from './lib/vpn-server-list/components/VpnServerListScreen';
 
-const Stack = createStackNavigator();
-
-function Dummy() {
-  return <Text>Dummy View</Text>;
-}
+const Stack = createStackNavigator<RootStackParamList>();
 
 function App() {
   return (
@@ -21,7 +19,13 @@ function App() {
             screenOptions={{
               header: props => <NavigationBar {...props} />,
             }}>
-            <Stack.Screen name="dummy" component={Dummy} />
+            <Stack.Screen
+              name="vpn-server.list"
+              component={VpnServerListScreen}
+              options={{
+                headerTitle: 'Server List',
+              }}
+            />
           </Stack.Navigator>
         </GestureHandlerRootView>
       </PaperProvider>
