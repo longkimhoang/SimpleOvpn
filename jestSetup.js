@@ -1,4 +1,5 @@
 import '@testing-library/jest-native';
+import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only';
 
 require('react-native-reanimated/lib/reanimated2/jestUtils').setUpTests();
 

@@ -20,7 +20,13 @@ function RefetchServersButton({fetchServers}: RefetchServersButtonProps) {
     fetchServers({signal: ref.current.signal});
   }, [fetchServers]);
 
-  return <Appbar.Action icon="reload" onPress={refetchServers} />;
+  return (
+    <Appbar.Action
+      icon="reload"
+      onPress={refetchServers}
+      testID="vpn-server-list.button.refetch-servers"
+    />
+  );
 }
 
 export default RefetchServersButton;
