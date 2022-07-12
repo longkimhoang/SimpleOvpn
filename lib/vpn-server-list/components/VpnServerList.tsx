@@ -44,6 +44,8 @@ function VpnServerList({vpnServers}: VpnServerListProps) {
       renderItem={renderVpnServerItem}
       getItemLayout={getVpnServerCellLayout}
       keyExtractor={extractKeyForVpnServerItem}
+      initialNumToRender={8}
+      windowSize={5}
       style={[
         {
           backgroundColor: colors.surface,
