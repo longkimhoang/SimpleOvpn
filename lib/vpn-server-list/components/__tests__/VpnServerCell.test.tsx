@@ -1,4 +1,4 @@
-import {render} from '@testing-library/react-native';
+import {fireEvent, render} from '@testing-library/react-native';
 import React from 'react';
 import {IVpnServer} from '../../../vpngate-client/models';
 import VpnServerCell from '../VpnServerCell';
@@ -26,5 +26,17 @@ describe('VpnServerCell', () => {
     const {queryByText} = render(<VpnServerCell data={mockVpnServer} />);
 
     expect(queryByText('public-vpn-90.opengw.net')).not.toBeNull();
+  });
+
+  test('should fire event handler correctly', () => {
+    const mockOnPress = jest.fn();
+    const {queryByTestId} = render(
+      <VpnServerCell data={mockVpnServer} onPress={mockOnPress} />,
+    );
+
+    const buttonElement = queryByTestId('vpn-server-list.cell');
+    fireEvent(buttonElement!, 'onPress');
+
+    expect(mockOnPress).toBeCalledTimes(1);
   });
 });

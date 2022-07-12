@@ -23,12 +23,15 @@ function VpnServerCellWrapper({
   children,
   ...rest
 }: VpnServerCellWrapperProps) {
+  const testID = 'vpn-server-list.cell';
+
   if (Platform.OS === 'android') {
     return (
       <TouchableNativeFeedback
         {...rest}
         style={[styles.container]}
-        onPress={onPress}>
+        onPress={onPress}
+        testID={testID}>
         {children}
       </TouchableNativeFeedback>
     );
@@ -36,8 +39,9 @@ function VpnServerCellWrapper({
     return (
       <TouchableHighlight
         {...rest}
+        style={[styles.container]}
         onPress={onPress}
-        style={[styles.container]}>
+        testID={testID}>
         {children}
       </TouchableHighlight>
     );
@@ -57,7 +61,7 @@ function VpnServerCell({data, onPress, ...rest}: VpnServerCellProps) {
     : color(theme.colors.text).alpha(0.54).rgb().string();
 
   return (
-    <VpnServerCellWrapper {...rest}>
+    <VpnServerCellWrapper onPress={onPress} {...rest}>
       <View style={styles.row}>
         <View style={[styles.item, styles.content]}>
           <Text

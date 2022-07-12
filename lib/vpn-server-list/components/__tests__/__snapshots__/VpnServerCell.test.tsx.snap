@@ -11,6 +11,7 @@ exports[`VpnServerCell should render correctly 1`] = `
   onGestureHandlerStateChange={[Function]}
   onHandlerStateChange={[Function]}
   rippleColor={0}
+  testID="vpn-server-list.cell"
   touchSoundDisabled={false}
 >
   <View
