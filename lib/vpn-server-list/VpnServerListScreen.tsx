@@ -6,11 +6,27 @@ import {ActivityIndicator} from 'react-native-paper';
 import Animated, {useAnimatedStyle} from 'react-native-reanimated';
 import NavigationBar from '../common/NavigationBar';
 import {VpnServerListNavigationProps} from '../navigation/types';
-import {useVpnGateClient} from '../vpngate-client';
+import {useVpnGateClient, VpnServerRepository} from '../vpngate-client';
 import {IVpnServer} from '../vpngate-client/models';
 import ConnectionOptionsSheet from './components/ConnectionOptionsSheet';
 import RefetchServersButton from './components/RefetchServersButton';
 import VpnServerList from './components/VpnServerList';
+
+//#region Typedefs
+
+export interface VpnServerListScreenDeps {
+  useVpnServerRepository: () => VpnServerRepository;
+  useVpnServerListNavigation: () => Pick<
+    VpnServerListNavigationProps,
+    'setOptions'
+  >;
+}
+
+export interface VpnServerListScreenProps {
+  overrideDeps?: Partial<VpnServerListScreenDeps>;
+}
+
+//#endregion
 
 const LoadingIndicatorWrapper: React.FC<{isFetching: boolean}> = ({
   isFetching,
@@ -30,9 +46,17 @@ const LoadingIndicatorWrapper: React.FC<{isFetching: boolean}> = ({
   );
 };
 
-function VpnServerListScreen() {
-  const {vpnServers, isFetching, fetchServers} = useVpnGateClient();
-  const navigation = useNavigation<VpnServerListNavigationProps>();
+function VpnServerListScreen({overrideDeps}: VpnServerListScreenProps) {
+  const deps: VpnServerListScreenDeps = {
+    ...overrideDeps,
+    useVpnServerRepository: useVpnGateClient,
+    useVpnServerListNavigation: useNavigation,
+  };
+
+  const {useVpnServerRepository, useVpnServerListNavigation} = deps;
+
+  const {vpnServers, isFetching, fetchServers} = useVpnServerRepository();
+  const navigation = useVpnServerListNavigation();
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
   useEffect(() => {
