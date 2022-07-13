@@ -5,7 +5,8 @@ import {
   TouchableHighlight,
   TouchableNativeFeedback,
 } from 'react-native-gesture-handler';
-import {Text, useTheme} from 'react-native-paper';
+import {Text} from 'react-native-paper';
+import {useTheme} from '../../theming';
 import {IVpnServer} from '../../vpngate-client/models';
 import {VPN_SERVER_CELL_HEIGHT} from './constants';
 
@@ -52,13 +53,8 @@ function VpnServerCell({data, onPress, ...rest}: VpnServerCellProps) {
   const {hostName, ipAddress} = data;
   const theme = useTheme();
 
-  const titleColor = theme.isV3
-    ? theme.colors.onSurface
-    : color(theme.colors.text).alpha(0.87).rgb().string();
-
-  const descriptionColor = theme.isV3
-    ? theme.colors.onSurfaceVariant
-    : color(theme.colors.text).alpha(0.54).rgb().string();
+  const titleColor = theme.colors.onSurface;
+  const descriptionColor = theme.colors.onSurfaceVariant;
 
   return (
     <VpnServerCellWrapper onPress={onPress} {...rest}>
