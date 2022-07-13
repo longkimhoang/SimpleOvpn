@@ -1,3 +1,4 @@
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
@@ -15,18 +16,20 @@ function App() {
     <NavigationContainer>
       <PaperProvider>
         <GestureHandlerRootView style={styles.gestureRootView}>
-          <Stack.Navigator
-            screenOptions={{
-              header: props => <NavigationBar {...props} />,
-            }}>
-            <Stack.Screen
-              name="vpn-server.list"
-              component={VpnServerListScreen}
-              options={{
-                headerTitle: 'Server List',
-              }}
-            />
-          </Stack.Navigator>
+          <BottomSheetModalProvider>
+            <Stack.Navigator
+              screenOptions={{
+                header: props => <NavigationBar {...props} />,
+              }}>
+              <Stack.Screen
+                name="vpn-server.list"
+                component={VpnServerListScreen}
+                options={{
+                  headerTitle: 'Server List',
+                }}
+              />
+            </Stack.Navigator>
+          </BottomSheetModalProvider>
         </GestureHandlerRootView>
       </PaperProvider>
     </NavigationContainer>

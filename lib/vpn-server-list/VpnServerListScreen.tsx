@@ -1,11 +1,14 @@
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect, useLayoutEffect} from 'react';
+import React, {useCallback, useEffect, useLayoutEffect, useRef} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {ActivityIndicator} from 'react-native-paper';
 import Animated, {useAnimatedStyle} from 'react-native-reanimated';
 import NavigationBar from '../common/NavigationBar';
 import {VpnServerListNavigationProps} from '../navigation/types';
 import {useVpnGateClient} from '../vpngate-client';
+import {IVpnServer} from '../vpngate-client/models';
+import ConnectionOptionsSheet from './components/ConnectionOptionsSheet';
 import RefetchServersButton from './components/RefetchServersButton';
 import VpnServerList from './components/VpnServerList';
 
@@ -30,6 +33,7 @@ const LoadingIndicatorWrapper: React.FC<{isFetching: boolean}> = ({
 function VpnServerListScreen() {
   const {vpnServers, isFetching, fetchServers} = useVpnGateClient();
   const navigation = useNavigation<VpnServerListNavigationProps>();
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
   useEffect(() => {
     if (vpnServers.length > 0) {
@@ -58,11 +62,17 @@ function VpnServerListScreen() {
     });
   }, [navigation]);
 
+  const handleItemPress = useCallback((server: IVpnServer) => {
+    bottomSheetModalRef.current?.present(server);
+  }, []);
+
   return (
     <View style={styles.root}>
       <LoadingIndicatorWrapper isFetching={isFetching} />
 
-      <VpnServerList vpnServers={vpnServers} />
+      <VpnServerList vpnServers={vpnServers} onItemPress={handleItemPress} />
+
+      <ConnectionOptionsSheet ref={bottomSheetModalRef} />
     </View>
   );
 }

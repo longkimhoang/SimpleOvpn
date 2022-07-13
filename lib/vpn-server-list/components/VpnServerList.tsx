@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {ListRenderItemInfo} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {useTheme} from 'react-native-paper';
@@ -8,8 +8,11 @@ import VpnServerCell from './VpnServerCell';
 
 //#region FlatList implementations
 
-function renderVpnServerItem({item}: ListRenderItemInfo<IVpnServer>) {
-  return <VpnServerCell data={item} />;
+function renderVpnServerItem(
+  item: IVpnServer,
+  onPress?: (server: IVpnServer) => void,
+) {
+  return <VpnServerCell data={item} onPress={() => onPress?.(item)} />;
 }
 
 function getVpnServerCellLayout(
@@ -33,15 +36,23 @@ function extractKeyForVpnServerItem(item: IVpnServer): string {
 
 export interface VpnServerListProps {
   vpnServers: readonly IVpnServer[];
+  onItemPress?: (server: IVpnServer) => void;
 }
 
-function VpnServerList({vpnServers}: VpnServerListProps) {
+function VpnServerList({vpnServers, onItemPress}: VpnServerListProps) {
   const {colors} = useTheme();
+
+  const renderItem = useCallback(
+    ({item}: ListRenderItemInfo<IVpnServer>) => {
+      return renderVpnServerItem(item, onItemPress);
+    },
+    [onItemPress],
+  );
 
   return (
     <FlatList
       data={vpnServers}
-      renderItem={renderVpnServerItem}
+      renderItem={renderItem}
       getItemLayout={getVpnServerCellLayout}
       keyExtractor={extractKeyForVpnServerItem}
       initialNumToRender={8}
