@@ -68,4 +68,8 @@ function VpnServerList({vpnServers, onItemPress}: VpnServerListProps) {
 
 //#endregion
 
+export const exportedForTesting = {
+  getVpnServerCellLayout,
+};
+
 export default VpnServerList;

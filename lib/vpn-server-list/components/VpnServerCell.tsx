@@ -13,6 +13,7 @@ import {VPN_SERVER_CELL_HEIGHT} from './constants';
 export interface VpnServerCellProps {
   data: IVpnServer;
   onPress?: () => void;
+  testID?: string;
 }
 
 type VpnServerCellWrapperProps = PropsWithChildren<
