@@ -17,9 +17,20 @@ function extractHeaderTitle({
   return route.name;
 }
 
-export type NavigationBarProps = Pick<StackHeaderProps, 'navigation' | 'back' | 'options' | 'route'>
+export type NavigationBarProps = Pick<
+  StackHeaderProps,
+  'navigation' | 'back' | 'options' | 'route'
+> & {
+  headerRight?: () => React.ReactNode;
+};
 
-function NavigationBar({navigation, back, options, route}: NavigationBarProps) {
+function NavigationBar({
+  navigation,
+  back,
+  options,
+  route,
+  headerRight,
+}: NavigationBarProps) {
   const title = extractHeaderTitle({options, route});
 
   return (
@@ -31,6 +42,7 @@ function NavigationBar({navigation, back, options, route}: NavigationBarProps) {
         />
       ) : null}
       <Appbar.Content title={title} testID="navbar.title" />
+      {headerRight?.()}
     </Appbar.Header>
   );
 }

@@ -1,0 +1,668 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VpnServerList render empty state 1`] = `
+<RCTScrollView
+  collapsable={false}
+  data={Array []}
+  getItem={[Function]}
+  getItemCount={[Function]}
+  getItemLayout={[Function]}
+  handlerTag={1}
+  handlerType="NativeViewGestureHandler"
+  initialNumToRender={8}
+  keyExtractor={[Function]}
+  onContentSizeChange={[Function]}
+  onGestureHandlerEvent={[Function]}
+  onGestureHandlerStateChange={[Function]}
+  onLayout={[Function]}
+  onMomentumScrollBegin={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  renderScrollComponent={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={Array []}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "rgba(255, 251, 254, 1)",
+      },
+    ]
+  }
+  viewabilityConfigCallbackPairs={Array []}
+  windowSize={5}
+>
+  <View />
+</RCTScrollView>
+`;
+
+exports[`VpnServerList render items 1`] = `
+<RCTScrollView
+  collapsable={false}
+  data={
+    Array [
+      Object {
+        "base64EncodedOvpnConfig": "mockBase64OvpnConfig",
+        "country": "Japan",
+        "countryCode": "JP",
+        "hostName": "public-vpn-90",
+        "ipAddress": "219.100.37.55-0",
+        "operator": "Daiyuu Nobori_ Japan. Academic Use Only.",
+        "ping": 16,
+        "score": 3037585,
+        "speed": 71957702,
+      },
+      Object {
+        "base64EncodedOvpnConfig": "mockBase64OvpnConfig",
+        "country": "Japan",
+        "countryCode": "JP",
+        "hostName": "public-vpn-90",
+        "ipAddress": "219.100.37.55-1",
+        "operator": "Daiyuu Nobori_ Japan. Academic Use Only.",
+        "ping": 16,
+        "score": 3037585,
+        "speed": 71957702,
+      },
+      Object {
+        "base64EncodedOvpnConfig": "mockBase64OvpnConfig",
+        "country": "Japan",
+        "countryCode": "JP",
+        "hostName": "public-vpn-90",
+        "ipAddress": "219.100.37.55-2",
+        "operator": "Daiyuu Nobori_ Japan. Academic Use Only.",
+        "ping": 16,
+        "score": 3037585,
+        "speed": 71957702,
+      },
+      Object {
+        "base64EncodedOvpnConfig": "mockBase64OvpnConfig",
+        "country": "Japan",
+        "countryCode": "JP",
+        "hostName": "public-vpn-90",
+        "ipAddress": "219.100.37.55-3",
+        "operator": "Daiyuu Nobori_ Japan. Academic Use Only.",
+        "ping": 16,
+        "score": 3037585,
+        "speed": 71957702,
+      },
+      Object {
+        "base64EncodedOvpnConfig": "mockBase64OvpnConfig",
+        "country": "Japan",
+        "countryCode": "JP",
+        "hostName": "public-vpn-90",
+        "ipAddress": "219.100.37.55-4",
+        "operator": "Daiyuu Nobori_ Japan. Academic Use Only.",
+        "ping": 16,
+        "score": 3037585,
+        "speed": 71957702,
+      },
+    ]
+  }
+  getItem={[Function]}
+  getItemCount={[Function]}
+  getItemLayout={[Function]}
+  handlerTag={2}
+  handlerType="NativeViewGestureHandler"
+  initialNumToRender={8}
+  keyExtractor={[Function]}
+  onContentSizeChange={[Function]}
+  onGestureHandlerEvent={[Function]}
+  onGestureHandlerStateChange={[Function]}
+  onLayout={[Function]}
+  onMomentumScrollBegin={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  renderScrollComponent={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={Array []}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "rgba(255, 251, 254, 1)",
+      },
+    ]
+  }
+  viewabilityConfigCallbackPairs={Array []}
+  windowSize={5}
+>
+  <View>
+    <View
+      style={null}
+    >
+      <RNGestureHandlerButton
+        collapsable={false}
+        exclusive={true}
+        handlerTag={3}
+        handlerType="NativeViewGestureHandler"
+        onGestureEvent={[Function]}
+        onGestureHandlerEvent={[Function]}
+        onGestureHandlerStateChange={[Function]}
+        onHandlerStateChange={[Function]}
+        rippleColor={0}
+        testID="vpn-server-list.cell"
+        touchSoundDisabled={false}
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          style={
+            Object {
+              "height": 60,
+              "padding": 8,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "rgba(28, 27, 31, 1)",
+                      "fontSize": 16,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.15,
+                      "lineHeight": 24,
+                    },
+                    Object {
+                      "textAlign": "left",
+                    },
+                    Object {
+                      "writingDirection": "ltr",
+                    },
+                    Array [
+                      Object {
+                        "color": "rgba(28, 27, 31, 1)",
+                      },
+                    ],
+                  ]
+                }
+              >
+                public-vpn-90.opengw.net
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "rgba(28, 27, 31, 1)",
+                      "fontSize": 14,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.25,
+                      "lineHeight": 20,
+                    },
+                    Object {
+                      "textAlign": "left",
+                    },
+                    Object {
+                      "writingDirection": "ltr",
+                    },
+                    Array [
+                      Object {
+                        "color": "rgba(73, 69, 79, 1)",
+                      },
+                    ],
+                  ]
+                }
+              >
+                219.100.37.55-0
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RNGestureHandlerButton>
+    </View>
+    <View
+      style={null}
+    >
+      <RNGestureHandlerButton
+        collapsable={false}
+        exclusive={true}
+        handlerTag={4}
+        handlerType="NativeViewGestureHandler"
+        onGestureEvent={[Function]}
+        onGestureHandlerEvent={[Function]}
+        onGestureHandlerStateChange={[Function]}
+        onHandlerStateChange={[Function]}
+        rippleColor={0}
+        testID="vpn-server-list.cell"
+        touchSoundDisabled={false}
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          style={
+            Object {
+              "height": 60,
+              "padding": 8,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "rgba(28, 27, 31, 1)",
+                      "fontSize": 16,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.15,
+                      "lineHeight": 24,
+                    },
+                    Object {
+                      "textAlign": "left",
+                    },
+                    Object {
+                      "writingDirection": "ltr",
+                    },
+                    Array [
+                      Object {
+                        "color": "rgba(28, 27, 31, 1)",
+                      },
+                    ],
+                  ]
+                }
+              >
+                public-vpn-90.opengw.net
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "rgba(28, 27, 31, 1)",
+                      "fontSize": 14,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.25,
+                      "lineHeight": 20,
+                    },
+                    Object {
+                      "textAlign": "left",
+                    },
+                    Object {
+                      "writingDirection": "ltr",
+                    },
+                    Array [
+                      Object {
+                        "color": "rgba(73, 69, 79, 1)",
+                      },
+                    ],
+                  ]
+                }
+              >
+                219.100.37.55-1
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RNGestureHandlerButton>
+    </View>
+    <View
+      style={null}
+    >
+      <RNGestureHandlerButton
+        collapsable={false}
+        exclusive={true}
+        handlerTag={5}
+        handlerType="NativeViewGestureHandler"
+        onGestureEvent={[Function]}
+        onGestureHandlerEvent={[Function]}
+        onGestureHandlerStateChange={[Function]}
+        onHandlerStateChange={[Function]}
+        rippleColor={0}
+        testID="vpn-server-list.cell"
+        touchSoundDisabled={false}
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          style={
+            Object {
+              "height": 60,
+              "padding": 8,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "rgba(28, 27, 31, 1)",
+                      "fontSize": 16,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.15,
+                      "lineHeight": 24,
+                    },
+                    Object {
+                      "textAlign": "left",
+                    },
+                    Object {
+                      "writingDirection": "ltr",
+                    },
+                    Array [
+                      Object {
+                        "color": "rgba(28, 27, 31, 1)",
+                      },
+                    ],
+                  ]
+                }
+              >
+                public-vpn-90.opengw.net
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "rgba(28, 27, 31, 1)",
+                      "fontSize": 14,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.25,
+                      "lineHeight": 20,
+                    },
+                    Object {
+                      "textAlign": "left",
+                    },
+                    Object {
+                      "writingDirection": "ltr",
+                    },
+                    Array [
+                      Object {
+                        "color": "rgba(73, 69, 79, 1)",
+                      },
+                    ],
+                  ]
+                }
+              >
+                219.100.37.55-2
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RNGestureHandlerButton>
+    </View>
+    <View
+      style={null}
+    >
+      <RNGestureHandlerButton
+        collapsable={false}
+        exclusive={true}
+        handlerTag={6}
+        handlerType="NativeViewGestureHandler"
+        onGestureEvent={[Function]}
+        onGestureHandlerEvent={[Function]}
+        onGestureHandlerStateChange={[Function]}
+        onHandlerStateChange={[Function]}
+        rippleColor={0}
+        testID="vpn-server-list.cell"
+        touchSoundDisabled={false}
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          style={
+            Object {
+              "height": 60,
+              "padding": 8,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "rgba(28, 27, 31, 1)",
+                      "fontSize": 16,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.15,
+                      "lineHeight": 24,
+                    },
+                    Object {
+                      "textAlign": "left",
+                    },
+                    Object {
+                      "writingDirection": "ltr",
+                    },
+                    Array [
+                      Object {
+                        "color": "rgba(28, 27, 31, 1)",
+                      },
+                    ],
+                  ]
+                }
+              >
+                public-vpn-90.opengw.net
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "rgba(28, 27, 31, 1)",
+                      "fontSize": 14,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.25,
+                      "lineHeight": 20,
+                    },
+                    Object {
+                      "textAlign": "left",
+                    },
+                    Object {
+                      "writingDirection": "ltr",
+                    },
+                    Array [
+                      Object {
+                        "color": "rgba(73, 69, 79, 1)",
+                      },
+                    ],
+                  ]
+                }
+              >
+                219.100.37.55-3
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RNGestureHandlerButton>
+    </View>
+    <View
+      style={null}
+    >
+      <RNGestureHandlerButton
+        collapsable={false}
+        exclusive={true}
+        handlerTag={7}
+        handlerType="NativeViewGestureHandler"
+        onGestureEvent={[Function]}
+        onGestureHandlerEvent={[Function]}
+        onGestureHandlerStateChange={[Function]}
+        onHandlerStateChange={[Function]}
+        rippleColor={0}
+        testID="vpn-server-list.cell"
+        touchSoundDisabled={false}
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          style={
+            Object {
+              "height": 60,
+              "padding": 8,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "rgba(28, 27, 31, 1)",
+                      "fontSize": 16,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.15,
+                      "lineHeight": 24,
+                    },
+                    Object {
+                      "textAlign": "left",
+                    },
+                    Object {
+                      "writingDirection": "ltr",
+                    },
+                    Array [
+                      Object {
+                        "color": "rgba(28, 27, 31, 1)",
+                      },
+                    ],
+                  ]
+                }
+              >
+                public-vpn-90.opengw.net
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "rgba(28, 27, 31, 1)",
+                      "fontSize": 14,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.25,
+                      "lineHeight": 20,
+                    },
+                    Object {
+                      "textAlign": "left",
+                    },
+                    Object {
+                      "writingDirection": "ltr",
+                    },
+                    Array [
+                      Object {
+                        "color": "rgba(73, 69, 79, 1)",
+                      },
+                    ],
+                  ]
+                }
+              >
+                219.100.37.55-4
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RNGestureHandlerButton>
+    </View>
+  </View>
+</RCTScrollView>
+`;
