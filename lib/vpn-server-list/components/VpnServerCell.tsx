@@ -1,4 +1,3 @@
-import color from 'color';
 import React, {PropsWithChildren} from 'react';
 import {Platform, StyleSheet, View} from 'react-native';
 import {
