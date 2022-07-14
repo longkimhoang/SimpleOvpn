@@ -3,7 +3,14 @@ import React, {useMemo} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useTheme} from '../../theming';
 
-const ConnectionOptionsSheet = React.forwardRef<BottomSheetModal>((_, ref) => {
+interface ConnectionOptionsSheetProps {
+  initialIndex?: number;
+}
+
+const ConnectionOptionsSheet = React.forwardRef<
+  BottomSheetModal,
+  ConnectionOptionsSheetProps
+>(({initialIndex}, ref) => {
   const theme = useTheme();
   const snapPoints = useMemo(() => [120], []);
   const sheetBackgroundColor = theme.colors.surface;
@@ -13,6 +20,7 @@ const ConnectionOptionsSheet = React.forwardRef<BottomSheetModal>((_, ref) => {
     <BottomSheetModal
       ref={ref}
       snapPoints={snapPoints}
+      index={initialIndex}
       enablePanDownToClose
       backdropComponent={props => (
         <BottomSheetBackdrop
@@ -27,7 +35,12 @@ const ConnectionOptionsSheet = React.forwardRef<BottomSheetModal>((_, ref) => {
       handleIndicatorStyle={{
         backgroundColor: sheetHandleIndicatorColor,
       }}>
-      {props => <View style={[styles.container]} />}
+      {_props => (
+        <View
+          style={[styles.container]}
+          testID="vpn-server-list.connection-options-sheet"
+        />
+      )}
     </BottomSheetModal>
   );
 });

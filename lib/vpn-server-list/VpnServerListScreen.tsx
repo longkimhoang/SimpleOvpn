@@ -2,13 +2,12 @@ import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {useNavigation} from '@react-navigation/native';
 import React, {useCallback, useEffect, useLayoutEffect, useRef} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {ActivityIndicator} from 'react-native-paper';
-import Animated, {useAnimatedStyle} from 'react-native-reanimated';
 import NavigationBar from '../common/NavigationBar';
 import {VpnServerListNavigationProps} from '../navigation/types';
 import {useVpnGateClient, VpnServerRepository} from '../vpngate-client';
 import {IVpnServer} from '../vpngate-client/models';
 import ConnectionOptionsSheet from './components/ConnectionOptionsSheet';
+import LoadingIndicatorWrapper from './components/LoadingIndicatorWrapper';
 import RefetchServersButton from './components/RefetchServersButton';
 import VpnServerList from './components/VpnServerList';
 
@@ -20,6 +19,10 @@ export interface VpnServerListScreenDeps {
     VpnServerListNavigationProps,
     'setOptions'
   >;
+  presentConnectionOptionsSheet: (server: IVpnServer) => void;
+  useBottomSheetModalRef: (
+    initialValue: BottomSheetModal | null,
+  ) => React.MutableRefObject<BottomSheetModal | null>;
 }
 
 export interface VpnServerListScreenProps {
@@ -28,36 +31,27 @@ export interface VpnServerListScreenProps {
 
 //#endregion
 
-const LoadingIndicatorWrapper: React.FC<{isFetching: boolean}> = ({
-  isFetching,
-}) => {
-  const animatedStyle = useAnimatedStyle(() => {
-    return {
-      opacity: isFetching ? 1 : 0,
-    };
-  }, [isFetching]);
-
-  return (
-    <Animated.View
-      pointerEvents="none"
-      style={[styles.loadingIndicator, animatedStyle]}>
-      <ActivityIndicator animating={isFetching} hidesWhenStopped={false} />
-    </Animated.View>
-  );
-};
-
 function VpnServerListScreen({overrideDeps}: VpnServerListScreenProps) {
   const deps: VpnServerListScreenDeps = {
-    ...overrideDeps,
     useVpnServerRepository: useVpnGateClient,
     useVpnServerListNavigation: useNavigation,
+    presentConnectionOptionsSheet: server => {
+      bottomSheetModalRef.current?.present(server);
+    },
+    useBottomSheetModalRef: useRef,
+    ...overrideDeps,
   };
 
-  const {useVpnServerRepository, useVpnServerListNavigation} = deps;
+  const {
+    useVpnServerRepository,
+    useVpnServerListNavigation,
+    presentConnectionOptionsSheet,
+    useBottomSheetModalRef,
+  } = deps;
 
   const {vpnServers, isFetching, fetchServers} = useVpnServerRepository();
   const navigation = useVpnServerListNavigation();
-  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+  const bottomSheetModalRef = useBottomSheetModalRef(null);
 
   useEffect(() => {
     if (vpnServers.length > 0) {
@@ -86,9 +80,12 @@ function VpnServerListScreen({overrideDeps}: VpnServerListScreenProps) {
     });
   }, [navigation]);
 
-  const handleItemPress = useCallback((server: IVpnServer) => {
-    bottomSheetModalRef.current?.present(server);
-  }, []);
+  const handleItemPress = useCallback(
+    (server: IVpnServer) => {
+      presentConnectionOptionsSheet(server);
+    },
+    [presentConnectionOptionsSheet],
+  );
 
   return (
     <View style={styles.root}>
@@ -105,12 +102,6 @@ const styles = StyleSheet.create({
   root: {
     position: 'relative',
     flex: 1,
-  },
-  loadingIndicator: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
   },
 });
 
