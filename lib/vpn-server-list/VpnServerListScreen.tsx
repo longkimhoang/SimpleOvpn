@@ -65,7 +65,7 @@ function VpnServerListScreen({overrideDeps}: VpnServerListScreenProps) {
     return () => {
       ac.abort();
     };
-  }, []);
+  }, [fetchServers, vpnServers.length]);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -78,7 +78,7 @@ function VpnServerListScreen({overrideDeps}: VpnServerListScreenProps) {
         />
       ),
     });
-  }, [navigation]);
+  }, [fetchServers, navigation]);
 
   const handleItemPress = useCallback(
     (server: IVpnServer) => {
