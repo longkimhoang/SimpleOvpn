@@ -13,4 +13,15 @@ module.exports = {
       },
     },
   ],
+  rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
+  },
+  env: {
+    'jest/globals': true,
+  },
 };

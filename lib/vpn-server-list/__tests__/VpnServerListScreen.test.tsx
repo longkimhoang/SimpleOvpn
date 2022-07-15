@@ -111,7 +111,7 @@ describe('VpnServerListScreen', () => {
   test('when onPress is fired, bottomSheetModalRef.present will be invoked', () => {
     const mockVpnServer: IVpnServer = {
       hostName: 'public-vpn-90',
-      ipAddress: `219.100.37.55`,
+      ipAddress: '219.100.37.55',
       score: 3037585,
       ping: 16,
       speed: 71957702,
@@ -166,7 +166,7 @@ describe('VpnServerListScreen', () => {
         vpnServers: [
           {
             hostName: 'public-vpn-90',
-            ipAddress: `219.100.37.55`,
+            ipAddress: '219.100.37.55',
             score: 3037585,
             ping: 16,
             speed: 71957702,

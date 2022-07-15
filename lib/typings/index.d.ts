@@ -5,7 +5,7 @@ export {};
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       toHaveAnimatedStyle<
         S extends AnimatedStyleProp<ViewStyle | ImageStyle | TextStyle>,
       >(

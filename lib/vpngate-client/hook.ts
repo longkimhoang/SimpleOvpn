@@ -30,14 +30,14 @@ const converter = csv();
 function convertToVpnServer(value: any): IVpnServer {
   return {
     hostName: value['#HostName'],
-    ipAddress: value['IP'],
-    score: parseInt(value['Score']),
-    ping: parseInt(value['Ping']),
-    speed: parseInt(value['Speed']),
-    country: value['CountryLong'],
-    countryCode: value['CountryShort'],
-    operator: value['Operator'],
-    base64EncodedOvpnConfig: value['OpenVPN_ConfigData_Base64'],
+    ipAddress: value.IP,
+    score: parseInt(value.Score, 10),
+    ping: parseInt(value.Ping, 10),
+    speed: parseInt(value.Speed, 10),
+    country: value.CountryLong,
+    countryCode: value.CountryShort,
+    operator: value.Operator,
+    base64EncodedOvpnConfig: value.OpenVPN_ConfigData_Base64,
   };
 }
 
@@ -72,15 +72,18 @@ export function useVpnGateClient(
 
   const [isFetching, setIsFetching] = useState(() => false);
   const {data, write} = useVpnServerStorage();
-  const dispatch = useCallback((options?: FetchServersOptions) => {
-    setIsFetching(true);
+  const dispatch = useCallback(
+    (options?: FetchServersOptions) => {
+      setIsFetching(true);
 
-    fetchVpnServersAction({signal: options?.signal}).then(vpnServers => {
-      write(vpnServers);
+      fetchVpnServersAction({signal: options?.signal}).then(vpnServers => {
+        write(vpnServers);
 
-      setIsFetching(false);
-    });
-  }, []);
+        setIsFetching(false);
+      });
+    },
+    [fetchVpnServersAction, write],
+  );
 
   return {
     vpnServers: data,

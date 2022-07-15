@@ -6,7 +6,7 @@ function extractHeaderTitle({
   options,
   route,
 }: Pick<StackHeaderProps, 'options' | 'route'>): string {
-  if (options.headerTitle && typeof options.headerTitle == 'string') {
+  if (options.headerTitle && typeof options.headerTitle === 'string') {
     return options.headerTitle;
   }
 
