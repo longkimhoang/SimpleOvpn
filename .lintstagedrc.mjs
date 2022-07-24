@@ -1,3 +1,3 @@
 export default {
-  '*.{js,jsx,tx,tsx}': 'yarn lint',
+  '*.{js,jsx,tx,tsx}': 'eslint',
 };
